@@ -1,0 +1,30 @@
+
+
+.layout-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: row;
+    justify-content: flex-start;  
+}
+.layout-container > .left-wrapper {
+    flex-grow: 2;
+    background: blueviolet
+}
+.layout-container > .right-wrapper {
+    flex-grow: 7;
+    display: flex;
+    flex-direction: column;
+}
+.layout-container 
+> .right-wrapper 
+> .header-wrapper {
+    background-color: darkblue;
+    flex-grow: 1;
+}
+.layout-container
+> .right-wrapper
+> .content-wrapper {
+    flex-grow: 9;
+    background: darkcyan;
+}
