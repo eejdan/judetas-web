@@ -59,6 +59,9 @@
     justify-content: flex-start;
     align-items: center;
 }
+.login-form > .login-form-error {
+    background-color: white;
+}
 .login-form > label {
     font-family: 'Cabin Condensed', sans-serif;    font-weight: 500;
     font-size: 1.4em;
