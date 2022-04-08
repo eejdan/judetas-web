@@ -1,0 +1,86 @@
+.login-box {
+    /* marimi initiale */
+
+    --login-form-width: 300px;
+    --text-field-margin: 30px 0;
+    --layout-span-flex-grow: 2;
+    --layout-span-min-height: 40px;
+    --header-grow: 2;
+    --login-form-wrapper-grow: 5; 
+}
+
+.login-box {
+    display: flex;
+    width: 100%; 
+    height: 100%;
+    text-align: center;
+    flex-flow: column;
+    justify-content: center;
+    justify-items: center;
+}
+.top-span {
+    flex-grow: var(--layout-span-flex-grow);
+    min-height: var(--layout-span-min-height);
+}
+.bottom-span {
+    flex-grow: var(--layout-span-flex-grow);
+    min-height: var(--layout-span-min-height);
+}
+
+.header {
+    font-family: 'Righteous', cursive;
+    font-size: 4em;
+    flex-grow: var(--header-grow);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.temp-logo-span {
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    background-color: bisque;
+    border-radius: 50%;
+}
+.login-form-wrapper {
+    flex-grow: var(--login-form-wrapper-grow);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+.login-form {
+    display: flex;
+    height: 100%;
+    width: var(--login-form-width);
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.login-form > label {
+    font-family: 'Cabin Condensed', sans-serif;    font-weight: 500;
+    font-size: 1.4em;
+    text-align: left;
+    width: 100%;
+}
+.login-form > input[type=text],
+.login-form > input[type=password] {
+    margin: var(--text-field-margin);
+    background-color: aliceblue;
+    width: 100%;
+}
+.login-form > input[type=submit] {
+    background-color: var(--theme-1-action);
+    text-shadow: none;
+    border-style: solid;
+    border-color: var(--theme-1-action);
+
+}
+
+@media (max-width: 400px) {
+    .login-box {
+        --layout-span-min-height: 100px;
+    }
+}
