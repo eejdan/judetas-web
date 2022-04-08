@@ -1,43 +1,69 @@
 
-import { createContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+// import 'react-tabs/style/react-tabs.css';
+
+import Login from './Login'
 
 import './App.css';
-// import Layout from './util/Layout';
-//import UserReq from './components/UserReq'
-import Header from './components/Header'
 
 
 import axios from 'axios';
 
-const TabsContext = createContext(null);
-
 function App() {
+  const [page, setPage] = useState(<div></div>)
 
-  // const [user, setUser] = useState(null);
-  // const [token, setToken] = useState(null);
-
-  const [tabs, setTabs] = useState(null)
-
+  const appLayout = 
+    <Tabs>
+    <div className="layout-container">
+      <div className="left-wrapper">
+        <div className="user-container">
+          <span className="dot"></span>
+          <div>Will contain JudetAs Name and logo</div>
+        </div>
+        <div className="nav-container">
+          <div>
+            will contain sectiuni
+          </div>
+          <TabList>
+            <Tab>
+              1
+            </Tab>
+            <Tab>
+              2
+            </Tab>
+          </TabList>
+        </div>
+      </div>
+      <div className="right-wrapper">
+        <div className="header-wrapper">
+          <header className="header">
+            <div className="head">
+                Tab Name + info
+            </div>
+            
+          </header>
+        </div>
+        <div className="content-wrapper">
+          <TabPanel>
+            content 1
+          </TabPanel>
+          <TabPanel>
+            content 2
+          </TabPanel>
+        </div>
+      </div>
+    </div>
+    </Tabs>;
   useEffect(() => {
-    axios.get()
+    setPage(<Login />)
+    // axios.get()
   }, [])
 
   return (
-    <TabsContext.Provider value={tabs}>
-      <div className="layout-container">
-        <div className="left-wrapper">
-        
-        </div>
-        <div className="right-wrapper">
-          <div className="header-wrapper">
-            <Header />
-          </div>
-          <div className="content-wrapper">
-            test
-          </div>
-        </div>
-      </div>
-    </TabsContext.Provider>
+    <React.Fragment>
+      {page}
+    </React.Fragment>
   )
 }
 
