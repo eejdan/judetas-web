@@ -1,70 +1,71 @@
 
 import React, { useEffect, useState } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-// import 'react-tabs/style/react-tabs.css';
+import './App.css';
+import styles from './App.module.css'
+import ContentContainer from './components/ContentContainer';
 
+/* import { useCookies } from 'react-cookie'
 import Login from './Login'
-
 import './App.css';
 
+import useAuth from './hooks/useAuth';
+import useErrorQueue from './hooks/useErrorQueue';
+import PinModal from './PinModal'
+ */
+import Header from './components/Header';
+import AdminGeneral from './pages/AdminGeneral';
+import Unauthorized from './pages/Unauthorized';
 
-import axios from 'axios';
+/* function App() {
+  const [cookies, setCookies, removeCookie] = useCookies(['unsolved_sid'])
+  const [isLoggedIn, setIsLoggedIn] = useState((cookies.unsolved_sid))
+  const { auth, setAuth } = useAuth();
+  const { addError } = useErrorQueue(); 
+  useEffect(() => {
+    if(cookies['unsolved_sid'])
+        setAuth({
+          loggedIn: true,
+          session: cookies['unsolved_sid']
+        })
+  }, [])
+  const onLogin = () => {
+    setIsLoggedIn(true);
+  }
+  const onLogout = () => {
+    setIsLoggedIn(false);
+  }
+  const onAuthorize = () => {
+    
+  }
+  return( 
+  <React.Fragment>
+    {(!isLoggedIn ? (<div>
+      <Login onLogin={onLogin} />
+    </div>)
+    : ( !auth.authorized ? <div>
+      <PinModal sid={auth.session}/>
+      Esti Logat; dar neautorizat
+    </div>
+    : <React.Fragment>
+      Esti Logat;
+    </React.Fragment>))}
+   
+  </React.Fragment>
+  )
+  
+} */
+
 
 function App() {
-  const [page, setPage] = useState(<div></div>)
-
-  const appLayout = 
-    <Tabs>
-    <div className="layout-container">
-      <div className="left-wrapper">
-        <div className="user-container">
-          <span className="dot"></span>
-          <div>Will contain JudetAs Name and logo</div>
-        </div>
-        <div className="nav-container">
-          <div>
-            will contain sectiuni
-          </div>
-          <TabList>
-            <Tab>
-              1
-            </Tab>
-            <Tab>
-              2
-            </Tab>
-          </TabList>
-        </div>
-      </div>
-      <div className="right-wrapper">
-        <div className="header-wrapper">
-          <header className="header">
-            <div className="head">
-                Tab Name + info
-            </div>
-            
-          </header>
-        </div>
-        <div className="content-wrapper">
-          <TabPanel>
-            content 1
-          </TabPanel>
-          <TabPanel>
-            content 2
-          </TabPanel>
-        </div>
-      </div>
-    </div>
-    </Tabs>;
-  useEffect(() => {
-    setPage(<Login />)
-    // axios.get()
-  }, [])
-
   return (
-    <React.Fragment>
-      {page}
-    </React.Fragment>
+    <div className={styles['layout-container']}>
+      <Header />
+      <ContentContainer>
+        <AdminGeneral />
+      </ContentContainer>
+    </div>
   )
 }
+
 
 export default App;

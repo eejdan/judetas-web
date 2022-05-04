@@ -1,0 +1,7 @@
+.day-logout-button {
+    outline: 1px dashed;
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}

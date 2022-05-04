@@ -1,15 +1,18 @@
 
 import React, { useEffect, useState } from "react";
+import useAuth from "./hooks/useAuth";
+import useErrorQueue from "./hooks/useErrorQueue";
 import './Login.css'
 
 const axios = require('axios').default;
 
-function LoginForm() {
+function LoginForm(props) {
+    const { auth, setAuth } = useAuth();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState('');
-    const [errorDisplay, setErrorDisplay] = useState("none")
-    let errorTimeout;
+    const { setError } = useErrorQueue();
+    const [success, setSuccess] = useState("")
+    const [successDisplay, setSuccessDisplay] = useState("none")
     const handleSubmit = event => {
         event.preventDefault()
         axios.post('/api/auth/login', {
@@ -17,34 +20,34 @@ function LoginForm() {
             username: username
         }).then( res => {
             //temporar
-            setError("Date corecte!")
-            setErrorDisplay("block")
-            errorTimeout = setTimeout(() => {
-                setError("");
-                setErrorDisplay("none")
+            setAuth({
+                loggedIn: true,
+                user: username,
+                session: res.data.sid,
+                authorized: false,
+                currentAccessToken: null
+            })
+            setSuccess("Date corecte!")
+            setSuccessDisplay("block")
+            setTimeout(() => {
+                setSuccess("");
+                setSuccessDisplay("none")
             }, 15000)
+            props.onLogin();
         }).catch(err => {
             if(err.response) {
                 switch(err.response.status) {
                     case 400:
-                        clearTimeout(errorTimeout)
                         setError("Date de autentificare malformate.")
-                        setErrorDisplay("block")
-                        errorTimeout = setTimeout(() => {
-                            setError("");
-                            setErrorDisplay("none")
-                        }, 15000)
                         break;
                     case 401:
-                        clearTimeout(errorTimeout)
                         setError("Nume de utilizator sau parola gresite.")
-                        setErrorDisplay("block");
-                        errorTimeout = setTimeout(() => {
-                            setError("");
-                            setErrorDisplay("none")
-                        }, 15000)
+                        break;
+                    case 404:
+                        setError("Server indisponibil")
                         break;
                     default:
+                        setError("Eroare");
                         break;
                 }
             } else if (err.request) {
@@ -62,9 +65,9 @@ function LoginForm() {
             <form className="login-form" 
                 onSubmit={handleSubmit}>
                 <div 
-                    className="login-form-error" 
-                    style={{display: errorDisplay}}>
-                        {error}
+                    className="login-form-success" 
+                    style={{display: successDisplay}}>
+                        {success}
                 </div>
                 <label>Nume de utilizator</label>
                 <input type={"text"}
@@ -80,7 +83,7 @@ function LoginForm() {
     )
 }
 
-export default function Login() {
+export default function Login(props) {
 
 
     useEffect(() => {
@@ -99,7 +102,7 @@ export default function Login() {
             </div>
         </header>
         <div className="login-form-wrapper">       
-            <LoginForm />
+            <LoginForm onLogin={props.onLogin}/>
         </div>
         <div className="bottom-span">&nbsp;</div>
     </div>

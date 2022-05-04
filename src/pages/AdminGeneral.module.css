@@ -1,0 +1,47 @@
+.general-wrapper { 
+    height: 100%;
+    width: 100%;
+}
+.general-box {
+    --gb-height: 20%;
+    --gb-width: 80%;
+}
+
+.general-box {
+    padding: 30px 100px;
+    display: flex;
+    flex-flow:column;
+    margin: 5px auto;
+    height: 80%;
+    width: var(--gb-width);
+    border: 2px solid red;
+}
+.box-face {
+    flex: 0 1 auto;
+}
+.box-face-desc {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: 80% auto;
+}
+.box-face-desc-text {
+    text-align: center;
+}
+.box-face-desc-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.box-table {
+    flex: 1 1 auto;
+}
+@media screen and (max-width: 600px) {
+    .general-box {
+        --gb-width: 100%;
+    }
+}
+.context {
+    font-size: .7em;
+
+}

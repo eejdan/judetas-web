@@ -1,0 +1,106 @@
+.header-wrapper {
+    flex: 0 1 auto;
+    --bar-first: #067BC2;
+    --bar-second: #84BCDA;
+    --bar-third: #ECC30B;
+    --bar-fourth: #F37748; /* de revizuit culorile */
+    --bar-fifth: #D56062;
+    --bar-cut: 6px;
+    --bar-height: 8px;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    font-size: 4em;
+    clear: both;
+}
+.header { 
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+/*     flex-direction: row;
+    justify-content: space-around;
+    align-items: center; */
+    padding: 10px;
+}
+.action-select-wrapper {
+    flex-grow: 2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: .45em;
+}
+.action-select {
+    width: 150px;
+    min-width: fit-content;
+    
+    /* border: 1px solid salmon;
+     */
+}
+.action-select-wrapper > div {
+
+}
+.title-wrapper {
+    flex-grow: 3;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.title {
+    display: flex;
+    font-family: 'Exo', sans-serif;
+    font-style: italic;
+    color: #333447;
+    align-items: baseline;
+}
+.title-small {
+    color:  #999999;
+    font-size: .45em;
+}
+.user-actions {
+    flex-grow: 2;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    font-size: .45em;
+}
+.underbar {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: var(--bar-height);
+}
+.underbar > div {
+    position: absolute;
+    content: ' ';
+    height: inherit;
+    clip-path: polygon(0 0, 100% 0%, calc(100% - var(--bar-cut)) 100%, 0% 100%);
+}
+.underbar > div:last-child {
+    clip-path: none !important;
+}
+.underbar .first {
+    background-color: var(--bar-first);
+    width: 20%;
+    z-index: 180;
+}
+.underbar .second {
+    background-color: var(--bar-second);
+    width: 40%;
+    z-index: 160;
+}
+.underbar .third {
+    background-color: var(--bar-third);
+    width: 60%;
+    z-index: 140;
+}
+.underbar .fourth {
+    background-color: var(--bar-fourth);
+    width: 80%;
+    z-index: 120;
+}
+.underbar .fifth {
+    background-color: var(--bar-fifth);
+    width: 100%;
+    z-index: 100;
+}

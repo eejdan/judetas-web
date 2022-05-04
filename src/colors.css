@@ -2,4 +2,6 @@ body {
     --theme-1-action: #EF5B5B;
     --theme-1-secondary: #20A39E;
     --theme-1-primary: #A3E1DA ;
+    --theme-1-danger: #e71d36 ;
+    --theme-1-warning: #FFD93D;
 }
