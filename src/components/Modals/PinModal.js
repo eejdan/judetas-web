@@ -6,7 +6,7 @@ import axios from 'axios'
 import { sha256 } from "crypto-hash"
 
 function PinModal(props) {
-    // to be stylize
+    // to be stylized
     console.log(props);
     const { setAuth } = useAuth();
     const [pin, setPin] = useState("");
