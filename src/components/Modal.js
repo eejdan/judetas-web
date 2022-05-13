@@ -9,5 +9,5 @@ export default function Modal(props) {
             {props.children}
             </div>
         </div>
-    , document.getElementById('modal-portal'))
+    , document.getElementById('app-modal'))
 }
