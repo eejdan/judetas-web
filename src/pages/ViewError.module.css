@@ -1,0 +1,21 @@
+.viewerror-wrapper {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 70% auto;
+    align-items: center;
+}
+
+.viewerror-box {
+    display: flex;
+    flex-flow: column;
+    justify-content: baseline;
+    align-items: center;
+}
+.viewerror-face {
+    margin-bottom: 40px;
+    font-size: 3em;
+}
+.viewerror-desc {
+    font-size: 1.2em;
+}
