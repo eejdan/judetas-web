@@ -41,40 +41,51 @@ const selectStyles = {
 }
 
 
-export default function Header() {
+export default function Header(props) {
     // ${#}-${localInstance.displayName}
     // # 0 = judet, 1 = comuna, 2 = localitate, 3-5 = lower
     // fiecare diviziune mai mica va avea un punct de culoare mov 
     // cu atat mai mica cu atat mai albicioasca va fi nuanta de mov
-    const options = [
-        { value: 'general', label: 'Admin General' },
-        { value: '0-galati', label: 'Judetul Galati' },
-        { value: '1-comanesti', label: 'Comuna Comanesti' },
-        { value: '2-comani', label: 'Localitatea Comani' },
-        { value: '2-mihail-kogalniceanu', label: 'Localitatea Mihail Kogalniceanu Tudor'}
-    ]
+    // const options = [
+    //     { value: 'general', label: 'Admin General' },
+    //     { value: '0-galati', label: 'Judetul Galati' },
+    //     { value: '1-comanesti', label: 'Comuna Comanesti' },
+    //     { value: '2-comani', label: 'Localitatea Comani' },
+    //     { value: '2-mihail-kogalniceanu', label: 'Localitatea Mihail Kogalniceanu Tudor'}
+    // ]
+
+    const handleViewChange = (option) => {
+        props.setTabIndex(option.value);
+    }
+
+    console.log(props.tabOptions);
     return (
         <div className={styles['header-wrapper']}>
             <div className={styles.header}>
                 <div className={styles['action-select-wrapper']}>
                     <div className={styles['action-select']}>
+                        { props.authorized && (
                         <Select
                             isSearchable={false}
                             menuPortalTarget={document.body} 
                             styles={selectStyles}
-                            options={options}
+                            options={props.tabOptions}
+                            onChange={handleViewChange}
                         />
+                        )}
                     </div>
                     <div>&nbsp;</div>
                 </div>
                 <div className={styles['title-wrapper']}>
                     <div className={styles.title}>
                         <div>JudetAs</div>
-                        <div className={styles['title-small']}>&nbsp;- Administrare</div>
+                        <div className={styles['title-small']}><div className={styles['hide-1000']}>&nbsp;-</div><div>&nbsp;Administrare</div></div>
                     </div>
                 </div>
                 <div className={styles['user-actions']}>
-                    <LogoutButton />
+                    {props.userActions.logout && (
+                        <LogoutButton />
+                    )}
                 </div>
             </div>
             <div className={styles.underbar}>
