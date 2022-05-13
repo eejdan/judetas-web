@@ -3,7 +3,7 @@
     --bar-first: #067BC2;
     --bar-second: #84BCDA;
     --bar-third: #ECC30B;
-    --bar-fourth: #F37748; /* de revizuit culorile */
+    --bar-fourth: #F37748;
     --bar-fifth: #D56062;
     --bar-cut: 6px;
     --bar-height: 8px;
@@ -36,9 +36,9 @@
     /* border: 1px solid salmon;
      */
 }
-.action-select-wrapper > div {
+/* .action-select-wrapper > div {
 
-}
+} */
 .title-wrapper {
     flex-grow: 3;
     display: flex;
@@ -55,6 +55,8 @@
 .title-small {
     color:  #999999;
     font-size: .45em;
+    display: flex;
+    flex-direction: row;
 }
 .user-actions {
     flex-grow: 2;
@@ -103,4 +105,15 @@
     background-color: var(--bar-fifth);
     width: 100%;
     z-index: 100;
+}
+
+@media screen and (max-width: 1000px) {
+    .hide-1000 {
+        display: none;
+    }
+    .title {
+        font-size: .65em;
+        flex-direction: column;
+        align-items: center;
+    }
 }
