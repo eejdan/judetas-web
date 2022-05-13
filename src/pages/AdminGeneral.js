@@ -36,7 +36,7 @@ const columns = [
     }
 ]
 
-export default function AdminGeneral() {
+export default function AdminGeneral(props) {
 
     const [people, setPeople] = useState([
         { firstName: "George", lastName: "Gheorge", CNP: "200", id: 1},
