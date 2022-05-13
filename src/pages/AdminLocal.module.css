@@ -1,0 +1,34 @@
+
+.local-wrapper {
+    height: 100%;
+    width: 100%;
+/*     overflow: scroll;
+ */}
+.local-box {
+    --lb-height: 20%;
+    --lb-width: 80%;
+}
+.local-box {
+    margin-top: 20px;
+    display: flex;
+    flex-flow:column;
+    margin: 5px auto;
+    height: 80%;
+    width: var(--lb-width);
+    border: 2px solid red;
+}
+.box-face {
+    flex: 0 1 auto;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.box-face {
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+.box-face > div {
+    border: 1px solid red;
+}
+.box-content {
+    padding: 30px 100px;
+}
