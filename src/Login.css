@@ -26,23 +26,6 @@
     flex-grow: var(--layout-span-flex-grow);
     min-height: var(--layout-span-min-height);
 }
-
-.header {
-    font-family: 'Righteous', cursive;
-    font-size: 4em;
-    flex-grow: var(--header-grow);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.temp-logo-span {
-    height: 100px;
-    width: 100px;
-    display: inline-block;
-    background-color: bisque;
-    border-radius: 50%;
-}
 .login-form-wrapper {
     flex-grow: var(--login-form-wrapper-grow);
     display: flex;
