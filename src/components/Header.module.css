@@ -23,9 +23,11 @@
     padding: 10px;
 }
 .action-select-wrapper {
+    height: 100%;
     flex-grow: 2;
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: baseline;
     align-items: center;
     font-size: .45em;
 }

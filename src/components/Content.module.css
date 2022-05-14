@@ -1,0 +1,31 @@
+
+.content-wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+.content-box {
+    --c-min-height: 20%;
+    --c-width: 80%;
+}
+
+.content-box {
+    font-size: 1.2em;
+    margin: 5px auto;
+    min-height: var(--c-min-height);
+    width: var(--c-width);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    border: 2px solid red;
+}
+
+.defaultboxface {
+    flex: 0 1 auto;
+}
+.defaultboxface-desc {
+    text-align: left;
+    font-size: .85em;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}

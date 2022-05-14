@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import { sha256 } from "crypto-hash"
 
@@ -7,10 +7,15 @@ import Modal from "../Modal";
 import styles from './PinModal.module.css'
 
 import axios from 'axios';
+import AuthContext from "../../context/AuthContext";
 
 function PinModal(props) {
     const [pin, setPin] = useState("");
     const [showSuccess, setShowSuccess] = useState(false);
+
+    const { onAuthorize, onInvalidSession,
+        session
+    } = useContext(AuthContext);
 
     const [showError, setShowError] = useState(false);
     const [error, setError] = useState("");
@@ -36,10 +41,10 @@ function PinModal(props) {
             '201': (data) => {
                 setShowError(false);
                 setShowSuccess(true);
-                props.onAuthorize(data.currentAccessToken);
+                onAuthorize(data.currentAccessToken);
             },
             '400': () => {
-                props.onInvalidSession();
+                onInvalidSession();
             },
             '401': () => {
                 setErrorTimeout(5);
@@ -47,10 +52,10 @@ function PinModal(props) {
                 setShowError(true);
             },
             '403': () => {
-                props.onInvalidSession();
+                onInvalidSession();
             },
             '410': () => {
-                props.onInvalidSession();
+                onInvalidSession();
             },
             '500': () => {
                 setErrorTimeout(30);
@@ -58,10 +63,10 @@ function PinModal(props) {
                 setShowError(true);
             }
         }
-        let solvedSid = await sha256(props.sid+pin);
+        let solvedSid = await sha256(session+pin);
 
         axios.post('http://localhost:3030/api/auth/admin/authorize', {
-          unsolved_sid: props.sid,
+          unsolved_sid: session,
           solved_sid: solvedSid
         }, {
             headers: {

@@ -7,7 +7,7 @@
     --gb-width: 80%;
 }
 
-.general-box {
+.general-box { /* TODO implement Content module */
     padding: 30px 100px;
     display: flex;
     flex-flow:column;

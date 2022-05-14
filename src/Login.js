@@ -1,12 +1,17 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './Login.css'
 import styles from "./Login.module.css"
+
+import AuthContext from "./context/AuthContext";
+
 import axios from 'axios';
 
 export function LoginForm(props) {
 
-    const [username, setUsername] = useState("");
+    const { setUsername, onNewSession } = useContext(AuthContext); 
+
+    const [mockUsername, setMockUsername] = useState("");
     const [password, setPassword] = useState("");
     const [showSuccess, setShowSuccess] = useState(false);
 
@@ -22,7 +27,7 @@ export function LoginForm(props) {
     useEffect(() => { // done
         return () => { //pentru cleanup la demontarea componentei
             clearTimeout(hideErrorTimeout);
-            setUsername('');
+            setMockUsername('');
             setPassword('');
             setError('');
         }
@@ -36,10 +41,8 @@ export function LoginForm(props) {
             '200': (data) => {
                 setShowError(false)
                 setShowSuccess(true);
-                props.onLogin({
-                    session_id: data.session_id,
-                    username: username
-                });
+                setUsername(mockUsername);
+                onNewSession(data.session_id);
             }, 
             '401': () => {
                 setError('Date incorecte.');
@@ -52,7 +55,7 @@ export function LoginForm(props) {
             }
         }
         axios.post('http://localhost:3030/api/auth/admin/login',{
-            username: username,
+            username: mockUsername,
             password: password
         }, {
             headers: {
@@ -94,7 +97,7 @@ export function LoginForm(props) {
                 )}
                 <label>Nume de utilizator</label>
                 <input type={"text"}
-                    onChange={e => setUsername(e.target.value)}
+                    onChange={e => setMockUsername(e.target.value)}
                 />
                 <label>Parola</label>
                 <input type={"password"} 

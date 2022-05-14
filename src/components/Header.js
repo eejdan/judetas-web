@@ -57,8 +57,6 @@ export default function Header(props) {
     const handleViewChange = (option) => {
         props.setTabIndex(option.value);
     }
-
-    console.log(props.tabOptions);
     return (
         <div className={styles['header-wrapper']}>
             <div className={styles.header}>
@@ -70,11 +68,11 @@ export default function Header(props) {
                             menuPortalTarget={document.body} 
                             styles={selectStyles}
                             options={props.tabOptions}
+                            defaultValue={{ value: '0', label: 'Contul Meu'}}
                             onChange={handleViewChange}
                         />
                         )}
                     </div>
-                    <div>&nbsp;</div>
                 </div>
                 <div className={styles['title-wrapper']}>
                     <div className={styles.title}>

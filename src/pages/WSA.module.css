@@ -1,0 +1,21 @@
+.wsa-wrapper {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 70% auto;
+    align-items: center;
+}
+
+.wsa-box {
+    display: flex;
+    flex-flow: column;
+    justify-content: baseline;
+    align-items: center;
+}
+.wsa-face {
+    margin-bottom: 40px;
+    font-size: 2em;
+}
+.wsa-desc {
+    font-size: 1.2em;
+}
