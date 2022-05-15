@@ -17,7 +17,7 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
-    border: 2px solid red;
+    transition: 1s;
 }
 
 .defaultboxface {
@@ -28,4 +28,29 @@
     font-size: .85em;
     margin-top: 30px;
     margin-bottom: 20px;
+}
+
+@media screen and (min-width: 1400px) {
+    .content-box {
+        --c-width: 55%;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .content-box {
+        --c-width: 80%;
+    }
+
+    .content-hide-1000 {
+        display: none;
+    }
+    .content-topface {
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media screen and (max-width: 630px) {
+    .content-box {
+        --c-width: 94%;
+    }
 }

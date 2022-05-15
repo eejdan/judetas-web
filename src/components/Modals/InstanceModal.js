@@ -31,7 +31,7 @@ export default function InstanceModal(props) {
 
             }
         }
-        axios.post('https://JudetAs-Backend.danielbirleanu.repl.co/api/localAdmin/')
+        axios.post('http://localhost:3030/api/localAdmin/')
     }, [])
 
     return (

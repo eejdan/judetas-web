@@ -65,7 +65,7 @@ function PinModal(props) {
         }
         let solvedSid = await sha256(session+pin);
 
-        axios.post('https://JudetAs-Backend.danielbirleanu.repl.co/api/auth/admin/authorize', {
+        axios.post('http://localhost:3030/api/auth/admin/authorize', {
           unsolved_sid: session,
           solved_sid: solvedSid
         }, {

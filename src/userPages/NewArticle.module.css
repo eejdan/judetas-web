@@ -1,0 +1,23 @@
+
+
+.newarticle-wrapper {
+    display: block;
+    display: flex;
+    height: 100%;
+    width: var(--login-form-width);
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.newarticle-wrapper label {
+    font-family: 'Cabin Condensed', sans-serif;    
+    font-weight: 500;
+    font-size: 1.4em;
+    text-align: left;
+    width: 100%;
+}
+.newarticle-wrapper > input {
+    margin: var(--text-field-margin);
+    background-color: aliceblue;
+    width: 100%;
+}

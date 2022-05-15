@@ -72,7 +72,7 @@ export default function MyAccount(props) {
                 setIsAccount(true);
             }
         }
-        axios.post('https://JudetAs-Backend.danielbirleanu.repl.co/api/admin/getaccount', {
+        axios.post('http://localhost:3030/api/admin/getaccount', {
             unsolved_sid: session,
             currentAccessToken: accessToken
         }, {

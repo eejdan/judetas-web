@@ -29,7 +29,7 @@ import AdminLocal from './pages/AdminLocal';
 import axios from 'axios';
 //tbd 500 error page
 
-function App() {
+function App(props) {
 
   const { 
     session, onInvalidSession,
@@ -132,7 +132,7 @@ function App() {
         setTabSelectData(newTabSelectData);
       },
     }
-    axios.post('https://JudetAs-Backend.danielbirleanu.repl.co/api/admin/roles', {
+    axios.post('http://localhost:3030/api/admin/roles', {
       unsolved_sid: session,
       currentAccessToken: accessToken
     }, {
@@ -180,7 +180,7 @@ function App() {
                   headMessage={"Buna ziua, va rugam sa autorizati sesiunea:"}
                   />
               </React.Fragment>)
-            : <Login/> )
+            : (<Login back={props.back}/>) )
         }
       </ContentContainer>
     </div>

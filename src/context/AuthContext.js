@@ -1,11 +1,10 @@
 import { createContext, useState, useEffect } from 'react'
 
-import axios from 'axios'
 import { useCookies } from 'react-cookie';
 
-const AuthContext = createContext()
+const AuthContext = createContext();
 
-export default AuthContext;
+export default AuthContext
 
 
 export const AuthProvider = ({children}) => {

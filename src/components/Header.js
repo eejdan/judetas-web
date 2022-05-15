@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import Select from 'react-select';
+import AuthContext from '../context/AuthContext';
 
 import LogoutButton from './auth/LogoutButton';
 
@@ -53,7 +54,9 @@ export default function Header(props) {
     //     { value: '2-comani', label: 'Localitatea Comani' },
     //     { value: '2-mihail-kogalniceanu', label: 'Localitatea Mihail Kogalniceanu Tudor'}
     // ]
+    const { loggedIn, authorized } = useContext(AuthContext)
 
+    
     const handleViewChange = (option) => {
         props.setTabIndex(option.value);
     }
@@ -62,7 +65,8 @@ export default function Header(props) {
             <div className={styles.header}>
                 <div className={styles['action-select-wrapper']}>
                     <div className={styles['action-select']}>
-                        { props.authorized && (
+                        { props.user
+                        ? (loggedIn && (
                         <Select
                             isSearchable={false}
                             menuPortalTarget={document.body} 
@@ -71,7 +75,16 @@ export default function Header(props) {
                             defaultValue={{ value: '0', label: 'Contul Meu'}}
                             onChange={handleViewChange}
                         />
-                        )}
+                        )) : (authorized && (
+                        <Select
+                            isSearchable={false}
+                            menuPortalTarget={document.body} 
+                            styles={selectStyles}
+                            options={props.tabOptions}
+                            defaultValue={{ value: '0', label: 'Contul Meu'}}
+                            onChange={handleViewChange}
+                        />
+                        ))}
                     </div>
                 </div>
                 <div className={styles['title-wrapper']}>
@@ -81,7 +94,7 @@ export default function Header(props) {
                     </div>
                 </div>
                 <div className={styles['user-actions']}>
-                    {props.userActions.logout && (
+                    {loggedIn && (
                         <LogoutButton />
                     )}
                 </div>

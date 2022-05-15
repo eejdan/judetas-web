@@ -1,13 +1,12 @@
+import React, { useState, useContext, useEffect } from 'react';
+import AuthContext from './context/AuthContext';
 
-import React, { useContext, useEffect, useState } from "react";
 import './Login.css'
+import axios from 'axios'
 
-import AuthContext from "./context/AuthContext";
 
-import axios from 'axios';
 
-export function LoginForm(props) {
-
+function UserLoginForm() {
     const { setUsername, onNewSession } = useContext(AuthContext); 
 
     const [mockUsername, setMockUsername] = useState("");
@@ -16,6 +15,7 @@ export function LoginForm(props) {
 
     const [showError, setShowError] = useState(false);
     const [error, setError] = useState("");
+
     var hideErrorTimeout;
     const setErrorTimeout = (seconds) => {
         clearTimeout(hideErrorTimeout);
@@ -23,19 +23,9 @@ export function LoginForm(props) {
             () => setShowError(false), seconds*1000)
     }
 
-    useEffect(() => { // done
-        return () => { //pentru cleanup la demontarea componentei
-            clearTimeout(hideErrorTimeout);
-            setMockUsername('');
-            setPassword('');
-            setError('');
-        }
-    }, [])
 
-
-    const handleSubmit = event => { //done
+    const handleSubmit = event => {
         event.preventDefault();
-
         const statusResolvers = {
             '200': (data) => {
                 setShowError(false)
@@ -53,7 +43,7 @@ export function LoginForm(props) {
                 setErrorTimeout(30);
             }
         }
-        axios.post('http://localhost:3030/api/auth/admin/login',{
+        axios.post('http://localhost:3030/api/auth/user/login',{
             username: mockUsername,
             password: password
         }, {
@@ -80,31 +70,42 @@ export function LoginForm(props) {
             console.log(err.config);
         });
     }
-    return(
-        <React.Fragment>
-            <form className="login-form" 
-                onSubmit={handleSubmit}>
-                { showSuccess && (
-                    <div className="login-form-success" >
-                            Autentificat cu success. Va rugam asteptati.
-                    </div>
-                )}
-                { showError && (
-                    <div className="error">
-                        { error }
-                    </div>
-                )}
-                <label>Nume de utilizator</label>
-                <input type={"text"}
-                    onChange={e => setMockUsername(e.target.value)}
-                />
-                <label>Parola</label>
-                <input type={"password"} 
-                    onChange={e => setPassword(e.target.value)}
-                />
-                <input type={"submit"} value={"Autentificare"}/>
-            </form>
-        </React.Fragment>
+
+    useEffect(() => { // done
+        return () => { //pentru cleanup la demontarea componentei
+            clearTimeout(hideErrorTimeout);
+            setMockUsername('');
+            setPassword('');
+            setError('');
+        }
+    }, [])
+
+
+    return (        
+    <React.Fragment>
+        <form className="login-form" 
+            onSubmit={handleSubmit}>
+            { showSuccess && (
+                <div className="login-form-success" >
+                        Autentificat cu success. Va rugam asteptati.
+                </div>
+            )}
+            { showError && (
+                <div className="error">
+                    { error }
+                </div>
+            )}
+            <label>Nume de utilizator</label>
+            <input type={"text"}
+                onChange={e => setMockUsername(e.target.value)}
+            />
+            <label>Parola</label>
+            <input type={"password"} 
+                onChange={e => setPassword(e.target.value)}
+            />
+            <input type={"submit"} />
+        </form>
+    </React.Fragment>
     )
 }
 
@@ -114,7 +115,7 @@ export default function Login(props) {
     <div className="login-box">
         <div className="top-span">&nbsp;</div>
         <div className="login-form-wrapper">       
-            <LoginForm onLogin={props.onLogin}/>
+            <UserLoginForm onLogin={props.onLogin}/>
         </div>
         <div><button onClick={props.back}>Inapoi</button></div>
         <div className="bottom-span">&nbsp;</div>

@@ -1,0 +1,43 @@
+.feed-wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+.feed-topface {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}/*  //TODO GRADIENT */
+
+.feed-filters-container {
+    flex: 1 1 auto;
+    min-width: none;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    
+}
+.feed-filter {
+
+    margin: 0 20px;
+    background: rgb(111,247,232);
+    background: linear-gradient(169deg, #84bcda 24%, #067bc2 100%);
+    color: #333447;    
+    box-shadow: -5px 5px 5px rgba(0,0,0,0.5);
+    height: 30px;
+    width: fit-content;
+    padding: 2px 40px;
+    font-size: .83em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+.feed-empty {
+    flex: 0 1 auto;
+}
