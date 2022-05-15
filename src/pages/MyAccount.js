@@ -72,7 +72,7 @@ export default function MyAccount(props) {
                 setIsAccount(true);
             }
         }
-        axios.post('http://localhost:3030/api/admin/getaccount', {
+        axios.post('https://JudetAs-Backend.danielbirleanu.repl.co/api/admin/getaccount', {
             unsolved_sid: session,
             currentAccessToken: accessToken
         }, {
@@ -118,7 +118,9 @@ export default function MyAccount(props) {
         <Content customBox={true}>
             { showInstanceModal && (
                 <InstanceModal
+                    instanceId={instanceModal}
                     exit={exitInstanceModal} 
+                    originalPage={"Contul meu"}
                 />
             )}
             <div className={styles['myaccount-wrapper']}>

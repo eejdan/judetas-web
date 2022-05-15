@@ -132,7 +132,7 @@ function App() {
         setTabSelectData(newTabSelectData);
       },
     }
-    axios.post('http://localhost:3030/api/admin/roles', {
+    axios.post('https://JudetAs-Backend.danielbirleanu.repl.co/api/admin/roles', {
       unsolved_sid: session,
       currentAccessToken: accessToken
     }, {

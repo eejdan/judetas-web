@@ -54,7 +54,7 @@ export function LoginForm(props) {
                 setErrorTimeout(30);
             }
         }
-        axios.post('http://localhost:3030/api/auth/admin/login',{
+        axios.post('https://JudetAs-Backend.danielbirleanu.repl.co/api/auth/admin/login',{
             username: mockUsername,
             password: password
         }, {
